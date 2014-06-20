@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/navbar.css" rel="stylesheet">
+    <style>
+    input{
+        display:block;
+        float:left;
+        margin-right:5px;
+        margin-left:10px;
+    }
+    fieldset{
+        margin-left:5px;
+    }
+    body{
+        background:#E8E8E8; 
+    }
+    p{
+        margin-left: 5px;
+        font-style:italic;
+    }
+    textarea{
+        resize:none;
+    }
+    </style>
+    <title>BDL-Insert Submission</title>
+  </head>
+  <body>
+   <nav class="navbar navbar-default" role="navigation">
+  
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Home</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a class="navbar-brand" href="search.html">Search</a></li>
+        <li><a class="navbar-brand" href="update.html">Update</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Insert<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="insertPerson.html">Insert Person</a></li>
+            <li><a href="insertSubmission.html">Insert Submission</a></li>
+            <li><a href="insertSample.html">Insert Sample</a></li>
+            <li><a href="insertDiagnosis.html">Insert Diagnosis</a></li>
+            <li><a href="insertDiagnosisType.html">Insert Diagnosis Type</a></li>
+          </ul>
+       </li>
+      </form> 
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+  </nav> 
+   
+  <p>To submit a new entry, fill in the required fields below and click 'Submit'.</p> 
+  <!-- Begin Entry Form -->
+  <form action="php/insertSubmissionAndSample.php" method="post">
+    <fieldset>
+    <legend>Submission Information:</legend>
+    <input type="text" name="submissiondate" placeholder="Submission Date" />
+    <input type="text" name="notification" placeholder="Notification Date" />
+    <input type="text" name="submitterid" required placeholder="Submitter ID (Required)" />
+    <input type="text" name="ownerid" required placeholder="Owner ID (Required)"/>
+    </fieldset>
+    </br>
+    
+    <fieldset>
+    <legend>Sample Information:</legend>
+    <select name="sampletype" style="float:left; margin-left:15px; font-size:large;">
+    <option>NDF</option>
+    <option>AFB</option>
+    <option>EFB</option>
+    <option>VD-B</option>
+    <option>CB</option>
+    <option>SB</option>
+    <option>VD-A</option>
+    <option>HBTM</option>
+    <option>NOS</option>
+    <option>SHB</option>
+    <option>GWM</option>
+    <option>Other</option>
+    </select>
+    <input type="text" name="submissionid" size="25" required placeholder="Submission ID (Required)" />
+    </fieldset>
+    </br>
+    <textarea style="margin-left:15px;" name="comment" cols="75" rows="10" maxlength="5000">Enter Comment Here...</textarea>
+    </br>
+  <input type="submit" style="margin-left:15px;"/>
+  </form>
+  <!-- End Entry Form -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

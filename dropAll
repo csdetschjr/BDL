@@ -1,0 +1,11 @@
+drop table other_diagnosis;
+drop table mite_diagnosis;
+drop table fungal_diagnosis;
+drop table bact_diagnosis;
+drop table other;
+drop table bacteria;
+drop table fungal;
+drop table mite;
+drop table sample;
+drop table submission;
+drop table person;

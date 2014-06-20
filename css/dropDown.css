@@ -1,0 +1,9 @@
+select{
+    color:gray;
+    float:left;
+    margin-left:15px;
+    font-size:large;
+}
+select option{
+    color:black;
+}

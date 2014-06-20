@@ -1,0 +1,49 @@
+    
+    input{
+        display:block;
+        float:left;
+        margin-right:5px;
+        margin-left:10px;
+    }
+    fieldset{
+        margin-left:5px;
+    }
+    body{
+        background:#E8E8E8;
+    }
+    center{
+        font-style:italic;
+        color:white;
+        font-size:medium;
+    }
+    textarea{
+        resize:none;
+    }
+    .titleEle{
+        font-style:italic;
+        list-style:none;
+         float:right;
+        color:white;
+        font-size:large;
+    }
+    .navEle{
+        height: 50px;
+        padding: 15px 15px;
+        font-size: 18px;
+        line-height: 20px;
+        color:white;
+    }
+    legend{
+        color:white;
+        font-style:italic;
+        font-size:xx-large;
+    }
+    label{
+        float:left;
+        color:#eeeeee;
+        font-size:large;
+        padding-right:25%;
+        letter-spacing:2px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+

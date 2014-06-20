@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/navbar.css" rel="stylesheet">
+    <link href="css/tables.css" rel="stylesheet">
+    <link href="css/forms.css" rel="stylesheet">
+    <link href="css/display.css" rel="stylesheet">
+    <link href="css/dropDown.css" rel="stylesheet">
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/search.js"></script>
+
+  <title>BDL-Search</title>
+  </head>
+  <body style="background-image:url(mooning_@2X.png)">
+   <nav class="navbar navbar-default" role="navigation">
+  
+  <div class="container-fluid">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a class="navbar-brand" href="index.html">Home</a></li>
+        <li><a class="navbar-brand" href="insert.html">Insert</a></li>
+        <li><a class="navbar-brand" href="search.html">Search</a></li>
+        <li><a class="navbar-brand" href="update.html">Update</a></li>
+        <li><a class="navbar-brand" href="infoPage.html">Info</a></li>
+        <li><a class="navbar-brand" href="premadeSearch.html">Diseases</a></li>
+      </ul>
+      <ul class="container-fluid" style="padding-left:45%; list-style:none;">
+       <li class="navbar-brand" style="list-style:none;">Select Search Type:
+            <form id="form">
+            <select name="toggle" style="color:black; font-size:large; width:130px;">
+                <option>NDF</option>
+                <option>AFB</option>
+                <option>EFB</option>
+                <option>VD-B</option>
+                <option>VD-A</option>
+                <option>CB</option>
+                <option>SB</option>
+                <option>HBTM</option>
+                <option>NOS</option>
+                <option>SHB</option>
+                <option>GWM</option>
+                <option>Other</option>
+            </select>
+            </form>
+      <li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+  </br>
+  </nav> 
+   
+  </br>
+    <div id="display" style="margin:0 auto;">
+    </div>
+  </br>
+  </br>
+
+  <!-- Begin Person Search Form -->
+  <form class="form-container" hidden id="personForm" name="personForm" action="php/searchPerson.php" method="post">
+      <fieldset>
+      <legend>Search for Owner / Submitter:</legend>
+      <label>First Name:</label>
+      <input class="form-field" id="fname" type="text" maxlength="20" placeholder="First Name" name="fname" />
+      <label>Last Name:</label>
+      <input class="form-field" id="lname" type="text" maxlength="20" placeholder="Last Name" name="lname" />
+      <label>Owner ID:</label>
+      <input class="form-field" type="text" maxlength="11" placeholder="Owner ID" name="ownerid" />
+      <label>Submitter ID:</label>
+      <input class="form-field" type="text" maxlength="11" placeholder="Submitter ID" name="submitterid" />
+      <label>Business Name:</label>
+      <input class="form-field" type="text" maxlength="30" placeholder="Business Name" name="businessname" />
+      <label>City:&nbsp&nbsp</label>
+      <input class="form-field" type="text" maxlength="20" placeholder="City" name="city" />
+      <label>Postal Code:</label>
+      <input class="form-field" type="text" maxlength="5" placeholder="Postal Code" name="postalcode" />
+      <label>Work/Cell Phone Number:</label>
+      <input class="form-field" type="text" maxlength="8" placeholder="Phone Number" id="workphone" name="workphone" />
+      <label>Email:</label>
+      <input class="form-field" type="text" maxlength="40" placeholder="Email" id="email" name="email" />
+      </fieldset>
+      <input class="submit-button" id='submit1' type="submit" />
+      </br>
+      </br>
+  </form>
+  <!-- End Entry Form -->
+
+  <!-- Begin Sample Search Form -->
+  <form class="form-container" id="sampleForm" action="php/searchSample.php" method="post">
+      <fieldset>
+      <legend>Search for Sample:</legend>
+      <label>Sample ID:</label>
+      <input class="form-field" id="sampleid" type="text" maxlength="11" placeholder="Sample ID" name="sampleid" />
+      <label>Sample Type:</label>
+      <select class="form-field" id="sampletype" name="sampletype">
+        <option>Smear</option>
+        <option>Comb</option>
+        <option>Immature Bee</option>
+        <option>Adult Bee</option>
+        <option>Beetle</option>
+        <option>Frass</option>
+        <option>Other</option>
+      </select>
+      <label>Submission ID:</label>
+      <input class="form-field" id="submissionid" type="text" maxlength="11" placeholder="Submission ID" name="submissionid" />
+      </fieldset>
+      </br>
+      <input class="submit-button" id='submit2' type="submit"/>
+      </br>
+      </br>
+  </form>
+  <!-- End Entry Form -->
+
+  <!-- Begin Submission Search Form -->
+  <form class="form-container" hidden id="subForm" action="php/searchSubmission.php" method="post">
+      <fieldset>
+      <legend>Search for Submission:</legend>
+      <label>Submission ID:</label>
+      <input class="form-field" id="submissionid2" type="text" maxlength="11" placeholder="Submission ID" name="submissionid2" />
+      <label>Submission Date:</label>
+      <input class="form-field" id="submissiondate" type="text" maxlength="8" placeholder="YYYY/MM/DD" name="submissiondate" />
+      <label>Notification Date:</label>
+      <input class="form-field" id="notification" type="text" maxlength="8" placeholder="YYYY/MM/DD" name="notification" />
+      <label>Submitter ID:</label>
+      <input class="form-field" id="submitterid2" type="text" maxlength="11" placeholder="Submitter ID" name="submitterid2" />
+      <label>Owner ID:</label>
+      <input class="form-field" id="ownerid2" type="text" maxlength="11" placeholder="Owner ID" name="ownerid2" />
+      </fieldset>
+      <input class="submit-button" id='submit3' type="submit"/>
+      </br>
+      </br>
+  </form>
+  <!-- End Entry Form -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

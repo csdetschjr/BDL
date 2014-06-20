@@ -1,0 +1,18 @@
+    input{
+        display:block;
+        float:left;
+        margin-right:5px;
+        margin-left:10px;
+    }
+    fieldset{
+        margin-left:5px;
+    }
+    body{
+        background:#E8E8E8;
+    }
+    center{
+        color:white;
+        font-size:medium;
+        font-style:italic;
+    }
+

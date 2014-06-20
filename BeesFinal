@@ -1,0 +1,105 @@
+create table person(
+ fname          varchar(20)     NOT NULL,
+ mname          varchar(20),
+ lname          varchar(20)     NOT NULL,
+ suffix         varchar(4),
+ company        varchar(30),
+ address        varchar(50),
+ city           varchar(20),
+ state          char(2),
+ postalcode     char(5),
+ country        varchar(50),
+ workphone      char(10),
+ cellphone      char(10),
+ email          varchar(40),
+ personalid     char(10)        NOT NULL,
+ CONSTRAINT PRIMARY KEY (personalid)
+);
+
+create table submission(
+ submissionid   char(10)        NOT NULL,
+ submissiondate Date,
+ notification   Date,
+ submitterid    char(10),
+ ownerid        char(10),
+ CONSTRAINT PRIMARY KEY (submissionid),
+ CONSTRAINT FOREIGN KEY (submitterid) REFERENCES person (personalid) on delete set null
+);
+
+create table sample(
+ sampleid       char(10)        NOT NULL,
+ sampletype     varchar(15)     NOT NULL,
+ submissionid   char(10),
+ comment        varchar(5000),
+ CONSTRAINT PRIMARY KEY (sampleid),
+ CONSTRAINT FOREIGN KEY (submissionid) REFERENCES submission(submissionid) on delete set null
+);
+
+create table bacteria (
+ diagnosiskey char(5) NOT NULL,
+ description varchar(150),
+ CONSTRAINT PRIMARY KEY (diagnosiskey)
+);
+
+create table fungal (
+ diagnosiskey char(5) NOT NULL,
+ description varchar(150),
+ CONSTRAINT PRIMARY KEY (diagnosiskey)
+);
+
+create table mite (
+ diagnosiskey char(5) NOT NULL,
+ description varchar(150),
+ CONSTRAINT PRIMARY KEY (diagnosiskey)
+);
+
+create table other (
+ diagnosiskey char(5) NOT NULL,
+ description varchar(150),
+ CONSTRAINT PRIMARY KEY (diagnosiskey)
+);
+
+create table bact_diagnosis (
+ sampleid char(10),
+ diagnosiskey char(5),
+ diagnosisdate date,
+ casecomment varchar(5000),
+ terraymycinreszone int,
+ tylanreszone int,
+ CONSTRAINT PRIMARY KEY (diagnosiskey, sampleid),
+ CONSTRAINT FOREIGN KEY (sampleid) REFERENCES sample (sampleid) on delete set null,
+ CONSTRAINT FOREIGN KEY (diagnosiskey) REFERENCES bacteria (diagnosiskey) on delete set null
+);
+
+create table fungal_diagnosis (
+ sampleid char(10),
+ diagnosiskey char(5),
+ diagnosisdate date,
+ casecomment varchar(5000),
+ sporecount double,
+ CONSTRAINT PRIMARY KEY (diagnosiskey, sampleid),
+ CONSTRAINT FOREIGN KEY (sampleid) REFERENCES sample (sampleid) on delete set null,
+ CONSTRAINT FOREIGN KEY (diagnosiskey) REFERENCES fungal (diagnosiskey) on delete set null
+);
+
+create table mite_diagnosis (
+ sampleid char(10),
+ diagnosiskey char(5),
+ diagnosisdate date,
+ casecomment varchar(5000),
+ mitecount int,
+ CONSTRAINT PRIMARY KEY (diagnosiskey, sampleid),
+ CONSTRAINT FOREIGN KEY (sampleid) REFERENCES sample (sampleid) on delete set null,
+ CONSTRAINT FOREIGN KEY (diagnosiskey) REFERENCES mite (diagnosiskey) on delete set null
+);
+
+create table other_diagnosis (
+ sampleid char(10),
+ diagnosiskey char(5),
+ diagnosisdate date,
+ casecomment varchar(5000),
+ CONSTRAINT PRIMARY KEY (diagnosiskey, sampleid),
+ CONSTRAINT FOREIGN KEY (sampleid) REFERENCES sample (sampleid) on delete set null,
+ CONSTRAINT FOREIGN KEY (diagnosiskey) REFERENCES other (diagnosiskey) on delete set null
+);
+

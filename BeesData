@@ -1,0 +1,9 @@
+insert into person (fname, mname, lname, suffix, company, address, city, state,
+                    postalcode, country, workphone, cellphone, email) values
+    ('Chris', 'Scott', 'Detsch', 'Jr', 'Bees Inc.', '102 Stacybrook Dr',
+     'Concord', 'NC', '28025', 'United States of America', Null, '7044672605',
+     'cd62936@appstate.edu'),
+    ('Peyton', 'Wade', 'Saunders', NULL, 'Bees Inc.', '340 Meadow Springs', 
+      'Seagrove', 'NC', '27341', 'USA', NULL, NULL, NULL),
+     ('Evan','Ronald','Baker',NULL,'Bees Inc','120 Farmdale dr','Troutman',
+      'NC','28607','America',NULL,'7245615018','ebaker56@hotmail.com'); 
