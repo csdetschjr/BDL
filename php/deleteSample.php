@@ -2,8 +2,8 @@
     include("../bees.php");
     mysql_select_db("3430-s14-t6", $mydb);
 
-    $subID = $_POST['submissionid'];
-    $sampID = $_POST['sampleid'];
+    $subID = str_replace("'", "''", $_POST['submissionid']);
+    $sampID = str_replace("'", "''", $_POST['sampleid']);
 
     $myquery = "DELETE FROM sample WHERE ";
     $arr = array();

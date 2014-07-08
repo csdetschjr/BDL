@@ -2,9 +2,9 @@
     include("../bees.php");
     mysql_select_db("3430-s14-t6", $mydb);
     
-    $key = $_POST['diagid'];
-    $sampleid = $_POST['sampid'];
-    $diagDate = $_POST['diagnosisdate'];
+    $key = str_replace("'", "''", $_POST['diagid']);
+    $sampleid = str_replace("'", "''", $_POST['sampid']);
+    $diagDate = str_replace("'", "''", $_POST['diagnosisdate']);
     
     $arr = array();
     $i = 0;

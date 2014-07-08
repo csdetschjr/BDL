@@ -2,14 +2,14 @@
     include("../bees.php");
     mysql_select_db("3430-s14-t6", $mydb);
     
-    $key = $_POST['diagnosiskey'];
-    $sampleid = $_POST['sampleid'];
-    $diagDate = $_POST['diagnosisdate'];
-    $comment = $_POST['comment'];
-    $terraZone = $_POST['terramycinreszone'];
-    $tylanZone = $_POST['tylanreszone'];
-    $sporecount = $_POST['sporecount'];
-    $mitecount = $_POST['mitecount'];
+    $key = str_replace("'", "''", $_POST['diagnosiskey']);
+    $sampleid = str_replace("'", "''", $_POST['sampleid']);
+    $diagDate = str_replace("'", "''", $_POST['diagnosisdate']);
+    $comment = str_replace("'", "''", $_POST['comment']);
+    $terraZone = str_replace("'", "''", $_POST['terramycinreszone']);
+    $tylanZone = str_replace("'", "''", $_POST['tylanreszone']);
+    $sporecount = str_replace("'", "''", $_POST['sporecount']);
+    $mitecount = str_replace("'", "''", $_POST['mitecount']);
     
     $arr = array();
     $i = 0;

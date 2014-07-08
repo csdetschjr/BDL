@@ -2,9 +2,9 @@
     include("../bees.php");
     mysql_select_db("3430-s14-t6", $mydb);
 
-    $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
-    $id = $_POST['personalid'];
+    $fname = str_replace("'", "''", $_POST['fname']);
+    $lname = str_replace("'", "''", $_POST['lname']);
+    $id = str_replace("'", "''", $_POST['personalid']);
 
     $myquery = "DELETE FROM person WHERE ";
     $arr = array();

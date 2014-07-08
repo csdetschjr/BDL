@@ -11,20 +11,20 @@
                WHERE personalid = '$_POST[personalid]'";
     */
     
-    $fname = $_POST['fname'];
-    $mname = $_POST['mname'];
-    $lname = $_POST['lname'];
-    $suffix = $_POST['suffix'];
-    $company = $_POST['company'];
-    $address = $_POST['address'];
-    $city = $_POST['city'];
-    $state = $_POST['state'];
-    $postalcode = $_POST['postalcode'];
-    $country = $_POST['country'];
-    $workphone = $_POST['workphone'];
-    $cellphone = $_POST['cellphone'];
-    $email = $_POST['email'];
-    $personalid = $_POST['personalid'];
+    $fname = str_replace("'", "''", $_POST['fname']);
+    $mname = str_replace("'", "''", $_POST['mname']);
+    $lname = str_replace("'", "''", $_POST['lname']);
+    $suffix = str_replace("'", "''", $_POST['suffix']);
+    $company = str_replace("'", "''", $_POST['company']);
+    $address = str_replace("'", "''", $_POST['address']);
+    $city = str_replace("'", "''", $_POST['city']);
+    $state = str_replace("'", "''", $_POST['state']);
+    $postalcode = str_replace("'", "''", $_POST['postalcode']);
+    $country = str_replace("'", "''", $_POST['country']);
+    $workphone = str_replace("'", "''", $_POST['workphone']);
+    $cellphone = str_replace("'", "''", $_POST['cellphone']);
+    $email = str_replace("'", "''", $_POST['email']);
+    $personalid = str_replace("'", "''", $_POST['personalid']);
     
     $myquery = "UPDATE person SET ";
     $i = 0;

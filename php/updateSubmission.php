@@ -2,17 +2,20 @@
     include("../bees.php");
     mysql_select_db("3430-s14-t6", $mydb);
 
-    $myquery ="UPDATE submission SET submissiondate = '$_POST[submissiondate]',
-               notification = '$_POST[notification]', submitterid = '$_POST[submitterid]',
-               ownerid = '$_POST[ownerid]' 
-               WHERE submissionid = $_POST[submissionid2]";
-
-    $submissiondate = $_POST['submissiondate'];
-    $notif = $_POST['notification'];
-    $submitterid = $_POST['submitterid'];
-    $ownerid =$_POST['ownerid'];
-    $submissionid = $_POST['submissionid2'];
+    $submissiondate = str_replace("'", "''", $_POST['submissiondate']);
+    $notif = str_replace("'", "''", $_POST['notification']);
+    $submitterid = str_replace("'", "''", $_POST['submitterid']);
+    $ownerid = str_replace("'", "''", $_POST['ownerid']);
+    $submissionid = str_replace("'", "''", $_POST['submissionid2']);
+   
+    $myquery ="UPDATE submission SET submissiondate = '$submissiondate',
+               notification = '$notif', submitterid = '$submitterid',
+               ownerid = '$ownerid' 
+               WHERE submissionid = '$submissionid'";
+    
     $myquery ="UPDATE submission SET ";
+
+
 
     $i = 0;
     $arr = array();

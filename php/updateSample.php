@@ -2,10 +2,10 @@
     include("../bees.php");
     mysql_select_db("3430-s14-t6", $mydb);
 
-    $sampletype = $_POST['sampletype'];
-    $submissionid = $_POST['submissionid'];
-    $comment = $_POST['comment'];
-    $sampleid = $_POST['sampleid'];
+    $sampletype = str_replace("'", "''", $_POST['sampletype']);
+    $submissionid = str_replace("'", "''", $_POST['submissionid']);
+    $comment = str_replace("'", "''", $_POST['comment']);
+    $sampleid = str_replace("'", "''", $_POST['sampleid']);
     $myquery ="UPDATE sample SET ";
     $i = 0;
     $arr = array();

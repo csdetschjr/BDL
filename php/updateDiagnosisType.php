@@ -2,9 +2,9 @@
     include("../bees.php");
     mysql_select_db("3430-s14-t6", $mydb);
 
-    $class = $_POST['class'];
-    $descript = $_POST['description'];
-    $key = $_POST['diagnosiskey1'];
+    $class = str_replace("'", "''", $_POST['class']);
+    $descript = str_replace("'", "''", $_POST['description']);
+    $key = str_replace("'", "''", $_POST['diagnosiskey1']);
     
     $myquery = "";
     echo($descript ." YEAH");

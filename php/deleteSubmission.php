@@ -2,14 +2,12 @@
     include("../bees.php");
     mysql_select_db("3430-s14-t6", $mydb);
 
-    $myquery ="INSERT INTO submission VALUES
-    (NULL, '$_POST[submissiondate]','$_POST[notification]','$_POST[submitterid]','$_POST[ownerid]')";
 
-    $subid = $_POST['submissionid1'];
-    $subdate = $_POST['submissiondate'];
-    $notif = $_POST['notifcation'];
-    $submitterid = $_POST['submitterid'];
-    $ownerid = $_POST['ownerid'];
+    $subid = str_replace("'", "''", $_POST['submissionid1']);
+    $subdate = str_replace("'", "''", $_POST['submissiondate']);
+    $notif = str_replace("'", "''", $_POST['notifcation']);
+    $submitterid = str_replace("'", "''", $_POST['submitterid']);
+    $ownerid = str_replace("'", "''", $_POST['ownerid']);
     
     $myquery = "DELETE FROM submission WHERE ";
     $arr = array();

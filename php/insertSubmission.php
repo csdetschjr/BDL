@@ -2,8 +2,13 @@
     include("../bees.php");
     mysql_select_db("3430-s14-t6", $mydb);
 
+    $submissiondate = str_replace("'", "''", $_POST['submissiondate']);
+    $notification = str_replace("'", "''", $_POST['notification']);
+    $submitterid = str_replace("'", "''", $_POST['submitterid']);
+    $ownerid = str_replace("'", "''", $_POST['ownerid']);
+
     $myquery ="INSERT INTO submission VALUES
-    (NULL, '$_POST[submissiondate]','$_POST[notification]','$_POST[submitterid]','$_POST[ownerid]')";
+    (NULL, '$submissiondate','$notification','$submitterid','$ownerid')";
 
 
     if(!mysql_query($myquery))
