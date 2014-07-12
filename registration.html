@@ -17,44 +17,46 @@
     <script type="text/javascript" src="js/updateToggle.js"></script>
     <script type="text/javascript" src="js/diagnosis.js"></script>
      
-  <title>BDL-Login</title>
+  <title>BDL-Registration</title>
   </head>
   <body style="background-image:url(background.jpg)">
-  <nav class="navbar navbar-default" role="navigation" style="box-shadow: 5px 5px 5px gray; ">
+   <nav class="navbar navbar-default" role="navigation" style="box-shadow: 5px 5px 5px gray; ">
   
   <div class="container-fluid">
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-      <li><a class="navbar-brand"href="index.php">Home</a></li>
-           <li><a class="navbar-brand" href="login.html">Insert</a></li>
-           <li><a class="navbar-brand" href="login.html">Search</a></li>
-           <li><a class="navbar-brand" href="login.html">Update</a></li>
-           <li><a class="navbar-brand" href="login.html">Delete</a></li>
-           <li><a class="navbar-brand" href="login.html" style="color:black;">Login</a></li> 
+           <li><a class="navbar-brand"href="index.html">Home</a></li>
+           <li><a class="navbar-brand" href="insert.html">Insert</a></li>
+           <li><a class="navbar-brand" href="search.html">Search</a></li>
+           <li><a class="navbar-brand" href="update.html">Update</a></li>
+           <li><a class="navbar-brand" href="delete.html">Delete</a></li>
+           <li><a class="navbar-brand" href="login.html">Login</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
   </br>
   </nav> 
-   
-  <!-- Begin Sample Entry Form -->
-  </br>
-  </br>
-  <form name="loginForm" id="loginForm" action="php/login.php" method="post" class="form-container">
-    <legend style="color:white;">Login</legend>
+  
+   <!-- Begin Person Entry Form -->
+  <form class="form-container" name="registrationForm" id="registerForm" action="php/register.php" method="post">
+    <legend style="color:white;">Registration Information</legend>
     <fieldset>
-    <label>Username:</label>
-    <input class="form-field" type="text" name="username" maxlength="15"size="25" required placeholder="Enter Username" />
+    <label>Username: </label>
+    <input class="form-field" type="text" name="username" maxlength="20" required  />
     <label>Password: </label>
-    <input class="form-field" type="password" name="password" maxlength="15"size="25" required placeholder="Enter Password" />
-    </fieldset>
-    <fieldset>
-    <input class="submit-button" type="submit" value="Submit"/>
+    <input class="form-field" type="password" name="password1" maxlength="40" required />
+    <label>Confirm Password: </label>
+    <input class="form-field" type="password" name="password2" maxlength="40" required />
+    <label>Email: </label>
+    <input class="form-field" type="text" name="email" maxlength="100" required />
+    </br>
+    <input class="submit-button" type="submit" value="Register" />
     </fieldset>
   </form>
-
   <!-- End Entry Form -->
+  
+    
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
