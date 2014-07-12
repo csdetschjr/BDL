@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap -->
-   <!--  <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!--  <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/navbar.css" rel="stylesheet"> -->
     <link href="css/forms.css" rel="stylesheet">
     <link href="css/homePage.css" rel="stylesheet">
@@ -25,17 +25,27 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-      <li><a class="navbar-brand" href="index.html" style="color:black;">Home</a></li>
-        <li><a class="navbar-brand" href="insert.html">Insert</a></li>
-        <li><a class="navbar-brand" href="search.html">Search</a></li>
-        <li><a class="navbar-brand" href="update.html">Update</a></li>
-        <li><a class="navbar-brand" href="delete.html">Delete</a></li>
-        <?php 
-            session_start();
-            if(!isset$_SESSION['in'])
-                echo "<li><a class="navbar-brand" href="login.html">Login</a></li>";
-            else
-                echo "<li><a class="navbar-brand" href="login.html">Logout</a></li>";
+      <li><a class="navbar-brand" href="index.php" style="color:black;">Home</a></li>
+      <?php
+        session_start();
+        if(!isset($_SESSION['in']))
+        {
+            echo "<li><a class='navbar-brand' href='login.html'>Insert</a></li>";
+            echo "<li><a class='navbar-brand' href='login.html'>Search</a></li>";
+            echo "<li><a class='navbar-brand' href='login.html'>Update</a></li>";
+            echo "<li><a class='navbar-brand' href='login.html'>Delete</a></li>";
+        }
+        else
+        {
+            echo "<li><a class='navbar-brand' href='insert.php'>Insert</a></li>";
+            echo "<li><a class='navbar-brand' href='search.php'>Search</a></li>";
+            echo "<li><a class='navbar-brand' href='update.php'>Update</a></li>";
+            echo "<li><a class='navbar-brand' href='delete.php'>Delete</a></li>";
+        }
+        if(!isset($_SESSION['in']))
+            echo "<li><a class='navbar-brand' href='login.html'>Login</a></li>";
+        else
+            echo "<li><a class='navbar-brand' href='php/logout.php'>Logout</a></li>";
         ?>
       </ul>
     </div><!-- /.navbar-collapse -->
