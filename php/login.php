@@ -25,7 +25,7 @@
     
     if($tablepass != $givenpass)
     {
-        header('Location: ../insert.html'); // Incorrect Password
+        header('Location: ../registration.html'); // Incorrect Password
     }
     else
     {

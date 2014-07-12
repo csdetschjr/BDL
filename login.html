@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+CTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -17,10 +17,10 @@
     <script type="text/javascript" src="js/updateToggle.js"></script>
     <script type="text/javascript" src="js/diagnosis.js"></script>
      
-  <title>BDL-Registration</title>
+  <title>BDL-Login</title>
   </head>
   <body style="background-image:url(background.jpg)">
-   <nav class="navbar navbar-default" role="navigation" style="box-shadow: 5px 5px 5px gray; ">
+  <nav class="navbar navbar-default" role="navigation" style="box-shadow: 5px 5px 5px gray; ">
   
   <div class="container-fluid">
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -31,35 +31,35 @@
            <li><a class="navbar-brand" href="login.html">Search</a></li>
            <li><a class="navbar-brand" href="login.html">Update</a></li>
            <li><a class="navbar-brand" href="login.html">Delete</a></li>
-           <li><a class="navbar-brand" href="login.html" style="color:black;">Login</a></li>
+           <li><a class="navbar-brand" href="login.html" style="color:black;">Login</a></li> 
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
   </br>
   </nav> 
-  
-   <!-- Begin Person Entry Form -->
-  <form class="form-container" name="registrationForm" id="registerForm" action="php/register.php" method="post">
-    <legend style="color:white;">Registration Information</legend>
+   
+  <!-- Begin Login Entry Form -->
+  </br>
+  </br>
+  <form name="loginForm" id="loginForm" action="php/login.php" method="post" class="form-container">
+    <legend style="color:white;">Login</legend>
     <fieldset>
-    <label>Username: </label>
-    <input class="form-field" type="text" name="username" maxlength="20" required  />
+    <label>Username:</label>
+    <input class="form-field" type="text" name="username" maxlength="20"size="25" required placeholder="Enter Username" />
     <label>Password: </label>
-    <input class="form-field" type="password" name="password1" maxlength="40" required />
-    <label>Confirm Password: </label>
-    <input class="form-field" type="password" name="password2" maxlength="40" required />
-    <label>Email: </label>
-    <input class="form-field" type="text" name="email" maxlength="100" required />
-    </br>
-    <input class="submit-button" type="submit" value="Register" />
+    <input class="form-field" type="password" name="password" maxlength="40"size="25" required placeholder="Enter Password" />
+    </fieldset>
+    <fieldset>
+    <input class="submit-button" type="submit" value="Submit"/>
     </fieldset>
   </form>
+
   <!-- End Entry Form -->
-  
-    
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
   </body>
 </html>
+
+
