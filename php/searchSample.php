@@ -37,7 +37,7 @@
     
     $table = '<table style="margin:0 auto;" class="CSSTableGenerator" style="margin-left:15px;" border="1px">';
     $table .= '<tr><td>Sample ID</td><td>Type</td><td>Submission ID</td>'.
-              '<td>Comment</td><td>Diagnosis Type</td></tr>';
+              '<td>Comment</td><td>Diagnosis Type</td><td>Generate PDF</td></tr>';
     $sampEntered = !empty($sampleid);
     if($sampEntered){
         $bactQuery = "SELECT * FROM bact_diagnosis WHERE sampleid = '$sampleid';";
@@ -109,6 +109,7 @@
                         $table .= '----';
                 }
                 $table .= '</td>';
+                $table .= '<td><form action="php/pdfInfo.php" method="post"><button type="submit" name="sampleid" value="' . $row['sampleid'] . '">Generate PDF</button></form></td>';
          $table .= '</tr>'; 
     }
     

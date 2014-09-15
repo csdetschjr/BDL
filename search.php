@@ -21,9 +21,21 @@
     <link href="css/dropDown.css" rel="stylesheet">
 
     <link href="TestCss/business-casual.css" rel="stylesheet">
-
-
+    
+    <!-- jsPDF -->
+    <script type="text/javascript" src="jsPDF-master/jspdf.plugin.javascript.js"></script>
+    <script type="text/javascript" src="jsPDF-master/jspdf.js"></script>
+    <script type="text/javascript" src="jsPDF-master/jspdf.plugin.from_html.js"></script>
+    <script type="text/javascript" src="jsPDF-master/jspdf.plugin.png_support.js"></script>
+    <script type="text/javascript" src="jsPDF-master/jspdf.plugin.split_text_to_size.js"></script>
+    <script type="text/javascript" src="jsPDF-master/jspdf.plugin.addimage.js"></script>
+    <script type="text/javascript" src="jsPDF-master/jspdf.plugin.addhtml.js"></script>
+    <script type="text/javascript" src="jsPDF-master/jspdf.plugin.autoprint.js"></script>   
+    <script type="text/javascript" src="jsPDF-master/jspdf.plugin.cell.js"></script>
+    <script type="text/javascript" src="jsPDF-master/jspdf.plugin.standard_fonts_metrics.js"></script>
+    
     <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/makePDF.js"></script>
     <script src="js/search.js"></script>
 
   <title>BDL-Search</title>
@@ -135,7 +147,8 @@
       <input class="submit-button" id='submit3' type="submit"/>
       </br>
       </br>
-  </form>
+  </form> 
+
   <!-- End Entry Form -->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>

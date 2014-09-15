@@ -31,6 +31,6 @@
     {
         session_start();
         $_SESSION['in'] = "set";
-        header('Location: ../index.html'); // Correct Password redirecting to homepage for now.
+        header('Location: ../index.php'); // Correct Password redirecting to homepage for now.
     }
 ?>
