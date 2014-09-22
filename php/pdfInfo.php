@@ -13,7 +13,6 @@
 <?php
     include("../bees.php");
     mysql_select_db("3430-s14-t6", $mydb);
-
     $myquery = "SELECT DISTINCT * FROM person ";
     $myquery .= "INNER JOIN submission ON submission.ownerid = person.personalid ";
     $myquery .= "INNER JOIN sample ON sample.submissionid = submission.submissionid ";
@@ -58,6 +57,7 @@
     $caseComm = "";
     $extraInfo = "";
     $diagKey = "";
+    $diagBy = "";
 
     $myquery = "SELECT DISTINCT * FROM bact_diagnosis ";
     $myquery .= "INNER JOIN sample ON sample.sampleid = bact_diagnosis.sampleid ";
@@ -71,6 +71,7 @@
             $caseComm = $row['casecomment'];
             $extraInfo = "Terramycin Res Zone: " . $row['terraymycinreszone'] . " Tylan Res Zone: " . $row['tylanreszone'] . " ";
             $diagKey = $row['diagnosiskey'];
+            $diagBy = $row['diagnosisBy'];
         }
     }
 
@@ -86,6 +87,7 @@
             $caseComm = $row['casecomment'];
             $extraInfo = "Spore Count: " . $row['sporecount'] . " ";
             $diagKey = $row['diagnosiskey'];
+            $diagBy = $row['diagnosisBy'];
         }
     }
 
@@ -101,6 +103,7 @@
             $caseComm = $row['casecomment'];
             $extraInfo = "Mite Count: " . $row['mitecount'] . " ";
             $diagKey = $row['diagnosiskey'];
+            $diagBy = $row['diagnosisBy']; 
         }
     }
 
@@ -116,13 +119,28 @@
             $caseComm = $row['casecomment'];
             $extraInfo = "";
             $diagKey = $row['diagnosiskey'];
+            $diagBy = $row['diagnosisBy'];
         }
     }
-
-    $params = "\"".$fname."\", \"".$lname."\", \"".$address."\", \"".$city."\", \"".$state."\", \"".$zip;
-    $params .= "\", \"".$submissionDate."\", \"".$notifyDate."\", \"".$sampleType."\", \"".$comment."\", \"".$subfname;
-    $params .= "\", \"".$sublname."\", \"".$subaddress."\", \"".$subcity."\", \"".$substate."\", \"".$subzip;
-    $params .= "\", \"".$diagDate."\", \"".$caseComm."\", \"".$extraInfo."\", \"".$diagKey."\"";
+    $arr = array($fname, $lname, $address, $city, $state, $zip, $submissionDate, $notifyDate, $sampleType, $comment, $subfname, $sublname, $subaddress, $subcity, $substate, $subzip, $diagDate, $caseComm, $extraInfo, $diagKey, $diagBy);
+    $params = "";
+    for($i =0; $i < count($arr); $i++)
+    {
+        $new = str_replace('"','\"',$arr[$i]);
+        $newer = trim(preg_replace('/\s+/', ' ', $new));
+        if($i==0)
+            $params .= "\"";
+        $params .= $newer;
+        if($i==(count($arr)-1))
+            $params .= "\"";
+        else
+            $params .= "\", \"";
+    }
+    echo $params;
+    //$params = "\"".$fname."\", \"".$lname."\", \"".$address."\", \"".$city."\", \"".$state."\", \"".$zip;
+    //$params .= "\", \"".$submissionDate."\", \"".$notifyDate."\", \"".$sampleType."\", \"".$comment."\", \"".$subfname;
+    //$params .= "\", \"".$sublname."\", \"".$subaddress."\", \"".$subcity."\", \"".$substate."\", \"".$subzip;
+    //$params .= "\", \"".$diagDate."\", \"".$caseComm."\", \"".$extraInfo."\", \"".$diagKey."\", \"".$diagBy."\"";
 ?>
 <script>
     runPDF(<?php echo $params ?>);

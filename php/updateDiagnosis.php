@@ -5,12 +5,12 @@
     $key = str_replace("'", "''", $_POST['diagnosiskey']);
     $sampleid = str_replace("'", "''", $_POST['sampleid']);
     $diagDate = str_replace("'", "''", $_POST['diagnosisdate']);
+    $diagBy = str_replace("'", "''", $_POST['diagnosisby']);
     $comment = str_replace("'", "''", $_POST['comment']);
     $terraZone = str_replace("'", "''", $_POST['terramycinreszone']);
     $tylanZone = str_replace("'", "''", $_POST['tylanreszone']);
     $sporecount = str_replace("'", "''", $_POST['sporecount']);
-    $mitecount = str_replace("'", "''", $_POST['mitecount']);
-    
+    $mitecount = str_replace("'", "''", $_POST['mitecount']); 
     $arr = array();
     $i = 0;
     $myquery = "";
@@ -33,12 +33,20 @@
             $arr[$i]= " sporecount = '$sporecount' ";
             $i++;
         }
+        if(!empty($diagBy)){
+            $arr[$i]= " diagnosisby = '$diagBy' ";
+            $i++;
+        }
     }
     else if($key == "VD-A" || $key == "VD-B"){
         $myquery = "UPDATE mite_diagnosis SET ";
 
         if(!empty($mitecount)){
             $arr[$i]= " mitecount = '$mitecount' ";
+            $i++;
+        }
+        if(!empty($diagBy)){
+            $arr[$i]= " diagnosisby = '$diagBy' ";
             $i++;
         }
     }
@@ -53,9 +61,13 @@
     if(!empty($diagDate)){
         $arr[$i]= " diagnosisdate = '$diagDate' ";
         $i++;
-    }
+    } 
     if($comment != " "){
         $arr[$i]= " casecomment = '$comment' ";
+        $i++;
+    }
+    if(!empty($diagBy)){
+        $arr[$i]= " diagnosisby = '$diagBy' ";
         $i++;
     }
 

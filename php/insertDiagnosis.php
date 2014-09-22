@@ -7,8 +7,10 @@
     $sampleid = str_replace("'", "''",$sampleid);
     $diagnosisdate = $_POST['diagnosisdate'];
     $diagnosisdate = str_replace("'", "''", $diagnosisdate);
+    $diagnosisBy = $_POST['diagnosisby'];
+    $diagnosisBy = str_replace("'", "''", $diagnosisBy);
     $comment = $_POST['comment'];
-    $comment = str_replace("'", "''", $diagnosisdate);
+    $comment = str_replace("'", "''", $comment);
 
     if($key == "AFB"){
         $terramycinreszone = $_POST['terramycinreszone'];
@@ -17,7 +19,7 @@
         $tylanreszone = str_replace(",", "''", $tylanreszone);
         $myquery ="INSERT INTO bact_diagnosis VALUES
         ('$sampleid','$_POST[diagnosiskey]','$diagnosisdate',
-        '$comment','$terramycinreszone','$tylanreszone')";
+        '$comment','$terramycinreszone','$tylanreszone','$diagnosisBy')";
     }
 
     else if($key == "VD-B" || $key == "VD-A"){
@@ -25,19 +27,19 @@
         $mitecount = str_replace("'", "''", $mitecount);
         $myquery ="INSERT INTO mite_diagnosis VALUES
         ('$sampleid','$_POST[diagnosiskey]','$diagnosisdate',
-        '$comment','$mitecount')";
+        '$comment','$mitecount','$diagnosisBy')";
     }
     else if($key == "NOS"){
         $sporecount = $_POST['sporecount'];
         $sporecount = str_replace("'", "''", $sporecount);
         $myquery ="INSERT INTO fungal_diagnosis VALUES
         ('$sampleid','$_POST[diagnosiskey]','$diagnosisdate',
-        '$comment','$sporecount')";
+        '$comment','$sporecount','$diagnosisBy')";
     }
     else{
         $myquery ="INSERT INTO other_diagnosis VALUES
         ('$sampleid','$_POST[diagnosiskey]','$diagnosisdate',
-        '$comment')";
+        '$comment','$diagnosisBy')";
     }
     if(!mysql_query($myquery))
     {

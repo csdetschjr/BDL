@@ -168,6 +168,8 @@
     <input class="form-field" type="text" name="sampleid" maxlength="11" required placeholder="Sample ID(Required)" />
     <label>Diagnosis Date: </label>
     <input class="form-field" type="text" name="diagnosisdate" maxlength="10" required placeholder="YYYY/MM/DD" />
+    <label>Diagnosis By: </label>
+    <input class="form-field" type="text" name="diagnosisby" maxlength="50" required placeholder="Name of Diagnoser" /> 
     <label style="padding-right:60%;">Extra Information: </label></br>
     <input class="form-field" id="terra" hidden style="padding-left:2%;" maxlength="11" type="text" name="terramycinreszone" placeholder="Terramycin Res Zone"/>
     <input class="form-field" id="tylan" hidden style="padding-left:2%;" maxlength="11" type="text" name="tylanreszone" placeholder="Tylan Res Zone"/>
