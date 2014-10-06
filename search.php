@@ -42,7 +42,6 @@
   </head>
   <body style="background-image:url(background.jpg)">
    <nav class="navbar navbar-default" role="navigation" style="box-shadow: 5px 5px 5px gray; ">
-  
   <div class="container-fluid">
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -105,7 +104,7 @@
   <!-- Begin Sample Search Form -->
   <form class="form-container" id="sampleForm" action="php/searchSample.php" method="post">
       <fieldset>
-      <legend>Search for Sample:</legend>
+      <legend>Search for Sample:</legend> 
       <label>Sample ID:</label>
       <input class="form-field" id="sampleid" type="text" maxlength="11" placeholder="Sample ID" name="sampleid" />
       <label>Sample Type:</label>

@@ -9,11 +9,15 @@
 
     $myquery ="INSERT INTO sample VALUES
     ('NULL', '$_POST[sampletype]','$subid','$comment')";
-
+    
+    session_start();
     if(!mysql_query($myquery))
     {
-        die('Error: ' . mysql_error());
+        if(!isset($_SESSION['error']))
+            $_SESSION['error'] = "set";
     }
+    else
+        $_SESSION['insert'] = "sample";
     mysql_close($mydb);
 ?> 
 <?php header("Location:{$_SERVER['HTTP_REFERER']}");exit; ?>

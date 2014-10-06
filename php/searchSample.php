@@ -121,5 +121,3 @@
     echo ($table);
     mysql_close($mydb);
 ?>
- 
-

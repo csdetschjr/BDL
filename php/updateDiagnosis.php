@@ -10,7 +10,8 @@
     $terraZone = str_replace("'", "''", $_POST['terramycinreszone']);
     $tylanZone = str_replace("'", "''", $_POST['tylanreszone']);
     $sporecount = str_replace("'", "''", $_POST['sporecount']);
-    $mitecount = str_replace("'", "''", $_POST['mitecount']); 
+    $mitecount = str_replace("'", "''", $_POST['mitecount']);
+    $description = str_replace("'", "''", $_POST['description']); 
     $arr = array();
     $i = 0;
     $myquery = "";
@@ -62,12 +63,16 @@
         $arr[$i]= " diagnosisdate = '$diagDate' ";
         $i++;
     } 
-    if($comment != " "){
+    if($comment != ""){
         $arr[$i]= " casecomment = '$comment' ";
         $i++;
     }
     if(!empty($diagBy)){
         $arr[$i]= " diagnosisby = '$diagBy' ";
+        $i++;
+    }
+    if(!empty($description)){
+        $arr[$i]= " description = '$description' ";
         $i++;
     }
 

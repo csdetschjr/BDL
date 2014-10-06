@@ -9,12 +9,15 @@
 
     $myquery ="INSERT INTO submission VALUES
     (NULL, '$submissiondate','$notification','$submitterid','$ownerid')";
-
-
+    
+    session_start();
     if(!mysql_query($myquery))
-    {
-        die('Error: ' . mysql_error());
+    { 
+        if(!isset($_SESSION['error']))
+            $_SESSION['error'] = "set";
     }
+    else
+        $_SESSION['insert'] = "submission";           
     mysql_close($mydb);
 ?> 
 <?php header("Location:{$_SERVER['HTTP_REFERER']}");exit; ?>

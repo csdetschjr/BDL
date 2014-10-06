@@ -19,10 +19,13 @@
     <link href="css/display.css" rel="stylesheet">
     <link href="css/dropDown.css" rel="stylesheet">
     <link href="TestCss/business-casual.css" rel="stylesheet">
+    <link href="css/tables.css" rel="stylesheet">
 
     <script src="js/jquery-1.10.2.js"></script>
     <script type="text/javascript" src="js/updateToggle.js"></script>
     <script type="text/javascript" src="js/diagnosis.js"></script>
+    
+    <script src="js/insert.js"></script>
      
   <title>BDL-Insert</title>
   </head>
@@ -41,7 +44,7 @@
                 <option>Submission</option>
                 <option>Person</option>
                 <option>Diagnosis</option>
-                <option>Diagnosis Type</option>
+            <!--    <option>Diagnosis Type</option> -->
             </select>
             </form>
            <li><a class="navbar-brand" href="search.php">Search</a></li>
@@ -51,14 +54,66 @@
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
-  </br>
+  </br> 
   </nav> 
-   
+  <!-- Display most recent entry upon submission --> 
+  <?php 
+    if(isset($_SESSION['insert']))
+    {
+        $table = '<table style="margin:0 auto;" class="CSSTableGenerator" style="margin-left:15px;" border="1px"> ';
+        $quer = "SELECT * FROM ";
+        if($_SESSION['insert']=="person")
+        {
+            $quer .= "person WHERE personalid = (SELECT MAX(personalid) FROM person)";
+            $table .= '<tr><td>First Name</td><td>Middle Name</td><td>Last Name</td>'.
+              '<td>Suffix</td><td>Company</td><td>Address</td><td>City</td><td>State</td>'.
+              '<td>Postal Code</td><td>Country</td><td>Work Phone</td><td>Cell Phone</td>'.
+              '<td>Email</td><td>ID</td></tr>';
+        }
+        else if($_SESSION['insert']=="sample")
+        {
+            $quer .= "sample WHERE sampleid = (SELECT MAX(sampleid) FROM sample)";
+            $table .= "<tr><td>Sample ID</td><td>Type</td><td>Submission ID</td><td>Comment</td>";
+        }
+        else if($_SESSION['insert']=="submission")
+        {
+            $quer .= "submission WHERE submissionid = (SELECT MAX(submissionid) FROM submission)"; 
+            $table .= '<tr><td>Submission ID</td> <td>Submission Date</td>'.
+              '<td>Notification Date</td> <td>Submitter ID</td> <td>Owner ID</td></tr>';
+        }
+        include("./bees.php");
+        mysql_select_db("3430-s14-t6", $mydb);
+        $result = @mysql_query($quer, $mydb);
+        if($result !== false)
+        {
+            $row = mysql_fetch_array($result); 
+            $table .= '<tr> ';
+            $i = 0;
+            for($i=0; $i < (count($row)/2); $i++)
+            {
+                if(!is_null($row[$i]))
+                    $table .= '<td>'.$row[$i].'</td> ';
+            }
+            $table .= '</tr> </table>';
+            unset($_SESSION['insert']); 
+            echo $table;
+        }
+        else
+            echo $quer;
+    }
+  ?> 
   <!-- Begin Sample Entry Form -->
   </br>
   </br>
   <form name="sampForm" id="sampForm" action="php/insertSample.php" method="post" class="form-container">
     <legend style="color:white;">Sample Information:</legend>
+    <?php 
+        if(isset($_SESSION['error']))
+        {
+            echo "<h4>An error has occured with the input information.</h4>";
+            unset($_SESSION['error']);
+        }
+    ?>
     <fieldset>
     <label>Sample Type:</label>
     <select class="form-field" id="choice" name="sampletype">
@@ -85,6 +140,13 @@
   <form hidden class="form-container" name="subForm" id="subForm" action="php/insertSubmission.php" method="post">
     <fieldset>
     <legend style="color:white;">Submission Information:</legend>
+    <?php 
+        if(isset($_SESSION['error']))
+        {
+            echo "<h4>An error has occured with the input information.</h4>";
+            unset($_SESSION['error']);
+        }
+    ?>
     <label>Submission Date: </label>
     <input class="form-field" type="text" name="submissiondate" maxlength="10" placeholder="YYYY/MM/DD" />
     <label>Notification Date: </label>
@@ -101,8 +163,15 @@
   <!-- Begin Person Entry Form -->
   <form hidden class="form-container" name="personForm" id="personForm" action="php/insertPerson.php" method="post">
     <fieldset>
-    <legend style="color:white;">Owner/Submitter Information:</legend>
+    <legend style="color:white;">Owner/Submitter Information:</legend> 
     <legend style="font-size:large; color:white;">Name / Company:</legend>
+    <?php 
+        if(isset($_SESSION['error']))
+        {
+            echo "<h4>An error has occured with the input information.</h4>";
+            unset($_SESSION['error']);
+        }
+    ?>
     <label>First Name: </label>
     <input class="form-field" type="text" name="fname" maxlength="20" required placeholder="First (Required)" />
     <label>Middle Name: </label>
@@ -142,6 +211,13 @@
   <form hidden class="form-container" id="diagForm" name="diagForm" action="php/insertDiagnosis.php" method="post">
     <fieldset>
     <legend style="color:white;">Diagnosis Information:</legend>
+    <?php 
+        if(isset($_SESSION['error']))
+        {
+            echo "<h4>An error has occured with the input information.</h4>";
+            unset($_SESSION['error']);
+        }
+    ?>
     <label>Diagnosis Type: </label>
     <select class="form-field" id='diagnosiskey' name="diagnosiskey" required>
         <option>NDF</option>
@@ -163,6 +239,8 @@
     <input class="form-field" id="diagnosisdate" type="text" name="diagnosisdate" maxlength="10" required placeholder="YYYY/MM/DD" />
     <label>Diagnosis By: </label>
     <input class="form-field" id="diagnosisby" type="text" name="diagnosisby" maxlength="50" required placeholder="Name of Diagnoser" />
+    <label>Diagnosis Description: </label>
+    <textarea class="form-field" name="description" cols="75" rows="3" maxlength="150" placeholder="Enter Diagnosis Description Here..."></textarea>
     <label style="padding-right:60%;">Extra Information: </label></br>
     <input class="form-field" id="terra" hidden style="padding-left:2%;" type="text" maxlength="11" name="terramycinreszone" placeholder="Terramycin Resistance Zone"/>
     <input class="form-field" id="tylan" hidden style="padding-left:2%;" type="text" maxlength="11" name="tylanreszone" placeholder="Tylan Resistance Zone"/>
@@ -176,10 +254,18 @@
   </form>
   <!-- End Entry Form -->
 
-  <!-- Begin Diagnosis Type Entry Form -->
+  <!-- Begin Diagnosis Type Entry Form 
   <form hidden class="form-container" id="dTypeForm" name="dTypeForm" action="php/insertDiagnosisType.php" method="post">
     <fieldset>
     <legend style="color:white;">Diagnosis Type Information:</legend>
+    <?php 
+    /*    if(isset($_SESSION['error']))
+        {
+            echo "<h4>An error has occured with the input information.</h4>";
+            unset($_SESSION['error']);
+        }
+    */
+    ?>
     <label>Diagnosis Classification: </label>
     <select class="form-field" id='class' name="class" required>
         <option>Bacteria</option>
@@ -193,7 +279,8 @@
     <textarea class="form-field"name="description" cols="75" rows="10" maxlength="150" placeholder="Enter Description Here..."></textarea>
     <input class="submit-button" type="submit" />
     </fieldset>
-  </form>
+  </form> 
+  -->
   <!-- End Entry Form -->
 
    

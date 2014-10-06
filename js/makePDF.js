@@ -67,7 +67,7 @@ function runPDF(fname, lname, address, city, state, zip, submissionDate, notifyD
         doc.setFontSize(9);
         doc.text(11, 95, "Sample Information:");
         doc.setFontSize(12);
-        var pieces = comment.replace(/.{60}\S*\s+/g, "$&@").split(/\s+@/);
+        var pieces = comment.replace(/.{65}\S*\s+/g, "$&@").split(/\s+@/);
         if(pieces[0] != null)
             doc.text(41, 96, sampleType + " - " + pieces[0]);
         if(pieces[1] != null)
@@ -83,7 +83,7 @@ function runPDF(fname, lname, address, city, state, zip, submissionDate, notifyD
         doc.setFontSize(9);
         doc.text(11, 118, "Diagnosis:");
         doc.setFontSize(12);
-        var parts = caseComment.replace(/.{95}\S*\s+/g, "$&@").split(/\s+@/);
+        var parts = caseComment.replace(/.{88}\S*\s+/g, "$&@").split(/\s+@/);
         currPlace = 122;
         var i = 0;
         for(i=0; i< parts.length; i++)

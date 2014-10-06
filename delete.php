@@ -43,7 +43,7 @@
                     <option>Submission</option>
                     <option>Person</option>
                     <option>Diagnosis</option>
-                    <option>Diagnosis Type</option>
+               <!--     <option>Diagnosis Type</option> -->
                </select>
              </form>
              <li><a class='navbar-brand' href='php/logout.php'>Logout</a></li>
@@ -59,8 +59,10 @@
   <form style="box-shadow: 10px 10px 10px #006B6B;" name="sampForm" id="sampForm" action="php/deleteSample.php" method="post" class="form-container">
     <legend style="color:white;">Delete Sample Information:</legend>
     <fieldset>
+    <!--
     <label>Submission ID:</label>
     <input class="form-field" type="text" name="submissionid" maxlength="11"size="25" placeholder="Submission ID" />
+    -->
     <label>Sample ID:</label>
     <input class="form-field" type="text" name="sampleid" maxlength="11"size="25" placeholder="Sample ID" />
     <input class="submit-button" type="submit"/>
@@ -74,6 +76,7 @@
     <legend style="color:white;">Delete Submission Information:</legend>
     <label>Submission ID:</label>
     <input class="form-field" type="text" name="submissionid1" maxlength="11"size="25" placeholder="Submission ID" />
+    <!--
     <label>Submission Date: </label>
     <input class="form-field" type="text" name="submissiondate" maxlength="10" placeholder="YYYY/MM/DD" />
     <label>Notification Date: </label>
@@ -82,6 +85,7 @@
     <input class="form-field" type="text" name="submitterid" maxlength="11" placeholder="Submitter ID" />
     <label>Owner ID: </label>
     <input class="form-field" type="text" name="ownerid" maxlength="11"  placeholder="Owner ID"/>
+    -->
     <input class="submit-button" type="submit" />
     </fieldset>
   </form>
@@ -93,10 +97,12 @@
     <legend >Delete Owner/Submitter Information:</legend>
     <label>Personal ID: </label>
     <input class="form-field" type="text" name="personalid" maxlength="11" placeholder="Personal ID" />
+    <!--
     <label>First Name: </label>
     <input class="form-field" type="text" name="fname" maxlength="20" placeholder="First Name" />
     <label>Last Name: </label>
     <input class="form-field" type="text" name="lname" maxlength="20" placeholder="Last Name" />
+    -->
     <input class="submit-button" type="submit"/>
     </fieldset>
   </form>
@@ -106,12 +112,16 @@
   <form hidden class="form-container" id="diagForm" name="diagForm" action="php/deleteDiagnosis.php" method="post">
     <fieldset>
     <legend style="color:white;">Delete Diagnosis Information:</legend>
+    <!--
     <label>Sample ID: </label>
     <input class="form-field" id="sampid" type="text" name="sampid" maxlength="11" placeholder="Sample ID" />
+    -->
     <label>Diagnosis ID: </label>
     <input class="form-field" id="diagid" type="text" name="diagid" maxlength="11" placeholder="Diagnosis ID" />
+    <!--
     <label>Diagnosis Date: </label>
     <input class="form-field" id="diagnosisdate" type="text" name="diagnosisdate" maxlength="10" placeholder="YYYY/MM/DD" />
+    -->
     </br>
     <input class="submit-button" type="submit" />
     </fieldset>

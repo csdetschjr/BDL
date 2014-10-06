@@ -21,7 +21,9 @@
     }
     if(!mysql_query($myquery))
     {
-        die('Error: ' . mysql_error());
+        session_start();
+        if(!isset($_SESSION['error']))
+            $_SESSION['error'] = "set";
     }
     mysql_close($mydb);
 ?> 

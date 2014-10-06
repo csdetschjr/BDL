@@ -5,16 +5,16 @@
     $fname = str_replace("'", "''", $_POST['fname']);
     $mname = str_replace("'", "''", $_POST['mname']);
     $lname = str_replace("'", "''", $_POST['lname']);
-    $suffix = str_replace("'", "''", $POST['suffix']);
-    $company = str_replace("'", "''", $POST['company']);
-    $address = str_replace("'", "''", $POST['address']);
-    $city = str_replace("'", "''", $POST['city']);
-    $state = str_replace("'", "''", $POST['state']);
-    $postalcode = str_replace("'", "''", $POST['postalcode']);
-    $country = str_replace("'", "''", $POST['country']);
-    $workphone = str_replace("'", "''", $POST['workphone']);
-    $cellphone = str_replace("'", "''", $POST['cellphone']);
-    $email = str_replace("'", "''", $POST['email']);
+    $suffix = str_replace("'", "''", $_POST['suffix']);
+    $company = str_replace("'", "''", $_POST['company']);
+    $address = str_replace("'", "''", $_POST['address']);
+    $city = str_replace("'", "''", $_POST['city']);
+    $state = str_replace("'", "''", $_POST['state']);
+    $postalcode = str_replace("'", "''", $_POST['postalcode']);
+    $country = str_replace("'", "''", $_POST['country']);
+    $workphone = str_replace("'", "''", $_POST['workphone']);
+    $cellphone = str_replace("'", "''", $_POST['cellphone']);
+    $email = str_replace("'", "''", $_POST['email']);
 
 
     $myquery ="INSERT INTO person VALUES
@@ -23,10 +23,14 @@
     '$postalcode','$country', '$workphone',
     '$cellphone','$email', NULL)";
 
+    session_start();
     if(!mysql_query($myquery))
-    {
-        die('Error: ' . mysql_error());
+    { 
+        if(!isset($_SESSION['error']))
+            $_SESSION['error'] = "set";
     }
+    else
+        $_SESSION['insert'] = "person";
     mysql_close($mydb);
 ?> 
 <?php header("Location:{$_SERVER['HTTP_REFERER']}");exit; ?>

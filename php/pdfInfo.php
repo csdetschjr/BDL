@@ -12,6 +12,7 @@
 <script type="text/javascript" src="../js/makePDF.js"></script>
 <?php
     include("../bees.php");
+    
     mysql_select_db("3430-s14-t6", $mydb);
     $myquery = "SELECT DISTINCT * FROM person ";
     $myquery .= "INNER JOIN submission ON submission.ownerid = person.personalid ";
@@ -34,6 +35,7 @@
             $sampleType = $row['sampletype'];
             $submitterID = $row['submitterid'];
             $comment = $row['comment'];
+            $description = $row['description'];
         }
     }
     $myquery = "SELECT DISTINCT * FROM person ";
@@ -61,6 +63,7 @@
 
     $myquery = "SELECT DISTINCT * FROM bact_diagnosis ";
     $myquery .= "INNER JOIN sample ON sample.sampleid = bact_diagnosis.sampleid ";
+    //$myquery .= "INNER JOIN bacteria ON bact_diagnosis.diagnosiskey = bacteria.diagnosiskey ";
     $myquery .= "WHERE sample.sampleid LIKE " . $_POST['sampleid'];
     $result = @mysql_query($myquery, $mydb);
     if($result != FALSE)
